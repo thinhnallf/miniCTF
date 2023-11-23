@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF Challenge</title>
+    <style>
+        .blog {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;    
+        }
+    </style>
+</head>
+<body>
+    <h1>Blog Post</h1>
+   {% for blog in blogs %}
+    <div class="blog" onclick="location.href='{{ url_for('blog_detail', index=loop.index) }}'">
+        <h2>{{ blog['title'] }}</h2>
+        <p>{{ blog['content'] }}</p>
+    </div>
+{% endfor %}
+
+<!-- Add the admin panel link with admin UUID -->
+<a href="{{ url_for('admin_panel', uuid=get_user_uuid()) }}">Admin Panel</a>
+
+</body>
+</html>
